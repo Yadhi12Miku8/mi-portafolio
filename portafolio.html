@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio — Yadhi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<video autoplay muted loop id="bg-video">
+  <source src="videos/Hatsune Miku (9).mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<header class="site-header">
+  <a href="index.html" class="logo">Yadhi</a>
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="#portfolio" class="nav-link">Portafolio</a>
+    <button id="logoutBtn" class="btn ghost">Cerrar Sesión</button>
+  </nav>
+</header>
+
+<section id="portfolio" class="portfolio">
+  <div class="container">
+  <h2>Mi Portafolio</h2>
+
+  <div id="adminPanel" class="upload-panel hidden">
+    <form id="uploadForm">
+      <input type="file" id="fileInput">
+      <button type="submit" class="btn">Subir archivo</button>
+    </form>
+  </div>
+
+  <!-- Lista de archivos -->
+  <ul id="filesList" class="files-list"></ul>
+</div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

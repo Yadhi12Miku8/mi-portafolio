@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yadhi — Inicio</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Video de fondo -->
+<video autoplay muted loop id="bg-video">
+  <source src="videos/Hatsune Miku (9).mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<!-- Header -->
+<header class="site-header">
+  <a href="index.html" class="logo">Yadhi</a>
+  <nav class="nav">
+    <a href="#home" class="nav-link">Inicio</a>
+    <a href="#about" class="nav-link">Sobre mí</a>
+    <a href="#skills" class="nav-link">Habilidades</a>
+    <a href="#services" class="nav-link">Servicios</a>
+    <a href="portafolio.html" class="nav-link">Portafolio</a>
+    <a href="login.html" class="nav-link">Iniciar sesión</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1 id="typewriter"></h1>
+    <p class="lead">"Soy diseñadora especializada en la creación de bocetos y prototipos de páginas web, además de desarrolladora y programadora con experiencia en diferentes lenguajes de código. Me apasiona combinar creatividad y funcionalidad en cada proyecto, y siempre estoy aprendiendo nuevas tecnologías y lenguajes de programación para mejorar mis habilidades y ofrecer soluciones innovadoras."</p>
+    <div class="hero-cta">
+      <a href="#" class="btn">Descargar CV</a>
+      <a href="portafolio.html" class="btn ghost">Ver Portafolio</a>
+    </div>
+    <div class="socials">
+      <a href="#" title="GitHub"><i class="ri-github-fill"></i></a>
+      <a href="#" title="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
+      <a href="#" title="Instagram"><i class="ri-instagram-fill"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre Mí -->
+<section id="about" class="about">
+  <div class="container about-grid">
+    <!-- Imagen al costado izquierdo -->
+    <div class="about-img-container">
+      <img src="IMG_20250305_133835_257.webp" alt="Foto de Yadhi" class="about-img">
+    </div>
+
+    <!-- Texto centrado verticalmente al costado derecho -->
+    <div class="about-text">
+      <h2>Sobre mí</h2>
+      <p>Soy <strong>Yadhi</strong>Combino creatividad en el diseño con habilidades técnicas en programación, aplicando distintos lenguajes de código para construir experiencias digitales modernas. Siempre estoy aprendiendo nuevas tecnologías para innovar y ofrecer soluciones web completas y efectivas."</p>
+      <ul>
+        <li><strong>Experiencia:</strong> HTML/CSS, JS, PHP, MySQL</li>
+        <li><strong>Herramientas:</strong> Figma, VSCode, Git</li>
+        <li><strong>Intereses:</strong> Animaciones, live visuals, branding digital</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- Habilidades Animadas -->
+<section id="skills" class="skills">
+  <div class="container">
+    <h2>Habilidades</h2>
+    <div class="skill" data-percent="95"><span>HTML/CSS</span><div class="bar"><div class="bar-fill"></div></div></div>
+    <div class="skill" data-percent="88"><span>JavaScript</span><div class="bar"><div class="bar-fill"></div></div></div>
+    <div class="skill" data-percent="80"><span>UI / Animaciones</span><div class="bar"><div class="bar-fill"></div></div></div>
+    <div class="skill" data-percent="70"><span>PHP / MySQL</span><div class="bar"><div class="bar-fill"></div></div></div>
+  </div>
+</section>
+
+<!-- Servicios Interactivos -->
+<section id="services" class="services">
+  <div class="container">
+    <h2>Servicios</h2>
+    <div class="cards">
+      <article class="card">Diseño UI/UX tematizado (neón & Vocaloid)</article>
+      <article class="card">Frontend avanzado y animaciones</article>
+      <article class="card">Micro-sites / landing pages</article>
+      <article class="card">Branding digital para streamers</article>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

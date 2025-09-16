@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — Yadhi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-panel">
+  <h2>🔑 Iniciar Sesión</h2>
+  <form id="loginForm">
+    <div class="input-group">
+      <i class="ri-user-fill"></i>
+      <input type="text" id="username" placeholder="Usuario" required>
+    </div>
+    <div class="input-group">
+      <i class="ri-lock-fill"></i>
+      <input type="password" id="password" placeholder="Contraseña" required>
+    </div>
+    <button type="submit" class="btn">Entrar</button>
+    <div id="errorMsg" class="error"></div>
+  </form>
+  <p>Usuarios de prueba: <br>Admin: admin/admin123 <br>Invitado: invitado/1234</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
