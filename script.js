@@ -1,116 +1,133 @@
-// ------------------------------------
-// SIMULACIÓN DE USUARIOS
-// ------------------------------------
-const users = [
-  { username: "admin", password: "admin123", role: "admin", name:"Administrador" },
-  { username: "invitado", password: "1234", role: "guest", name:"Invitado" }
-];
-
-// ------------------------------------
-// LOGIN
-// ------------------------------------
-const loginForm = document.getElementById("loginForm");
-if (loginForm) {
-  loginForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const user = users.find(u => u.username === username && u.password === password);
-    
-    if(user) {
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      window.location.href = "portafolio.html";
-    } else {
-      document.getElementById("errorMsg").innerText = "Usuario o contraseña incorrectos";
-    }
-  });
-}
-
-// ------------------------------------
-// PORTAFOLIO
-// ------------------------------------
-const adminPanel = document.getElementById("adminPanel");
-const filesList = document.getElementById("filesList");
-const logoutBtn = document.getElementById("logoutBtn");
-
-// Recuperar usuario
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-// Mostrar panel admin si es admin
-if(adminPanel && currentUser?.role === "admin") {
-  adminPanel.classList.remove("hidden");
-}
-
-// Mostrar logout si usuario logeado
-if(logoutBtn && currentUser) {
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("currentUser");
-    window.location.href = "login.html";
-  });
-}
-
-// LISTA DE ARCHIVOS
-let files = JSON.parse(localStorage.getItem("files")) || [];
-
-// Renderizar archivos
-function renderFiles() {
-  filesList.innerHTML = "";
-  files.forEach((file, index) => {
-    const li = document.createElement("li");
-    li.innerHTML = `<a href="${file.url}" target="_blank">${file.name}</a>`;
-    if(currentUser?.role === "admin"){
-      const delBtn = document.createElement("button");
-      delBtn.textContent = "Eliminar";
-      delBtn.onclick = () => {
-        files.splice(index,1);
-        localStorage.setItem("files", JSON.stringify(files));
-        renderFiles();
-      };
-      li.appendChild(delBtn);
-    }
-    filesList.appendChild(li);
-  });
-}
-renderFiles();
-
-// SUBIR ARCHIVO (simulación)
-const uploadForm = document.getElementById("uploadForm");
-if(uploadForm) {
-  uploadForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const fileInput = document.getElementById("fileInput");
-    const file = fileInput.files[0];
-    if(file) {
-      const fileURL = URL.createObjectURL(file);
-      files.push({ name:file.name, url:fileURL });
-      localStorage.setItem("files", JSON.stringify(files));
-      renderFiles();
-      fileInput.value = "";
-    }
-  });
-}
-
-// ------------------------------------
-// TYPING HERO
-// ------------------------------------
+// ==========================
+// 🎬 EFECTO MAQUINA DE ESCRIBIR EN HERO
+// ==========================
 const typewriter = document.getElementById("typewriter");
-if(typewriter){
-  const text = "¡Hola! Soy Yadhi, diseñadora y programadora web.";
+if (typewriter) {
+  const text = typewriter.textContent;
+  typewriter.textContent = "";
   let i = 0;
-  function type() {
-    if(i < text.length) {
-      typewriter.innerHTML += text.charAt(i);
+  function typing() {
+    if (i < text.length) {
+      typewriter.textContent += text.charAt(i);
       i++;
-      setTimeout(type, 60);
+      setTimeout(typing, 100);
     }
   }
-  type();
+  typing();
 }
 
-// ------------------------------------
-// ANIMACIÓN BARRAS HABILIDADES
-// ------------------------------------
-document.querySelectorAll(".skill").forEach(skill => {
-  const percent = skill.dataset.percent;
-  skill.querySelector(".bar-fill").style.setProperty("--target", percent + "%");
+// ==========================
+// 🔑 LOGIN (login.html)
+// ==========================
+function login() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const error = document.getElementById("login-error");
+
+  if (!username || !password) {
+    error.textContent = "⚠️ Completa todos los campos.";
+    return;
+  }
+
+  // Rol administrador
+  if (username === "admin" && password === "1234") {
+    localStorage.setItem("userRole", "admin");
+    localStorage.setItem("username", username);
+    window.location.href = "portafolio.html";
+  }
+  // Rol usuario
+  else if (username === "usuario" && password === "1234") {
+    localStorage.setItem("userRole", "user");
+    localStorage.setItem("username", username);
+    window.location.href = "portafolio.html";
+  }
+  else {
+    error.textContent = "❌ Usuario o contraseña incorrectos.";
+  }
+}
+
+// ==========================
+// 📂 PORTAFOLIO (portafolio.html)
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const filesList = document.getElementById("filesList");
+  const uploadArea = document.getElementById("uploadArea");
+
+  if (filesList && uploadArea) {
+    const role = localStorage.getItem("userRole");
+
+    // Mostrar área de subida solo a admin
+    if (role === "admin") {
+      uploadArea.style.display = "block";
+    } else {
+      uploadArea.style.display = "none";
+    }
+
+    // Archivos simulados (se guardan en localStorage)
+    let files = JSON.parse(localStorage.getItem("portfolioFiles")) || [];
+
+    function renderFiles() {
+      filesList.innerHTML = "";
+      if (files.length === 0) {
+        filesList.innerHTML = "<p>No hay archivos en el portafolio.</p>";
+      } else {
+        files.forEach((file, index) => {
+          const li = document.createElement("li");
+          li.className = "file-item";
+
+          li.innerHTML = `
+            <span>📄 ${file.name}</span>
+            <div>
+              <a href="${file.url}" download class="btn small">Descargar</a>
+              ${
+                role === "admin"
+                  ? `<button class="btn small danger" onclick="deleteFile(${index})">Eliminar</button>`
+                  : ""
+              }
+            </div>
+          `;
+
+          filesList.appendChild(li);
+        });
+      }
+    }
+
+    renderFiles();
+
+    // ==========================
+    // 📤 SUBIR ARCHIVO (solo admin)
+    // ==========================
+    window.uploadFile = function () {
+      const fileInput = document.getElementById("fileInput");
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("⚠️ Selecciona un archivo primero.");
+        return;
+      }
+
+      const newFile = {
+        name: file.name,
+        url: URL.createObjectURL(file),
+      };
+
+      files.push(newFile);
+      localStorage.setItem("portfolioFiles", JSON.stringify(files));
+      renderFiles();
+      fileInput.value = "";
+    };
+
+    // ==========================
+    // 🗑 ELIMINAR ARCHIVO (solo admin)
+    // ==========================
+    window.deleteFile = function (index) {
+      if (confirm("¿Seguro que quieres eliminar este archivo?")) {
+        files.splice(index, 1);
+        localStorage.setItem("portfolioFiles", JSON.stringify(files));
+        renderFiles();
+      }
+    };
+  }
 });
+
+
