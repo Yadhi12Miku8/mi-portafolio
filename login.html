@@ -3,19 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio - Yadhi</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-
+  <title>Login - Yadhi</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-
 <body>
 
   <!-- 🎥 VIDEO DE FONDO -->
   <video autoplay muted loop id="bg-video">
     <source src="videos/Hatsune Miku   [ Live Wallpaper _ Wallpaper Engine ] Free.mp4" type="video/mp4">
-    Tu navegador no soporta el video.
   </video>
   <div class="overlay"></div>
 
@@ -23,92 +19,32 @@
   <header class="site-header">
     <a href="index.html" class="logo">Yadhi</a>
     <nav class="nav">
-      <a href="#hero" class="nav-link">Inicio</a>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="index.html#about" class="nav-link">Sobre mí</a>
+      <a href="index.html#skills" class="nav-link">Habilidades</a>
+      <a href="index.html#services" class="nav-link">Servicios</a>
       <a href="portafolio.html" class="nav-link">Portafolio</a>
       <a href="login.html" class="nav-link">Iniciar sesión</a>
     </nav>
   </header>
 
-  <!-- 🌟 HERO -->
-  <section id="hero" class="hero">
-    <div>
-      <h1 id="typewriter">Hola, soy Yadhi</h1>
-      <p>Bienvenido a mi portafolio profesional, con un diseño dinámico y moderno.</p>
-      <div class="hero-cta">
-        <a href="#about" class="btn">Conóceme</a>
-        <a href="portafolio.html" class="btn ghost">Ver Portafolio</a>
+  <!-- 🔑 LOGIN -->
+  <section id="login" class="login">
+    <div class="login-panel">
+      <h2>Iniciar Sesión</h2>
+      <div class="input-group">
+        <i class="ri-user-line"></i>
+        <input type="text" id="username" placeholder="Usuario">
       </div>
-
-   <!-- 🌐 Redes Sociales -->
-<section id="contacto" class="social-section">  
-  <div class="social-icons">
-    <a href="https://facebook.com/" target="_blank"><i class="ri-facebook-circle-fill"></i></a>
-    <a href="https://instagram.com/" target="_blank"><i class="ri-instagram-fill"></i></a>
-    <a href="https://linkedin.com/" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
-    <a href="https://github.com/" target="_blank"><i class="ri-github-fill"></i></a>
-  </div>
-</section>
-
-  </section>
-
-  <!-- 🧑‍💻 SOBRE MÍ -->
-  <section id="about" class="about">
-    <div class="about-grid">
-      <img src="IMG_20250305_133835_257.webp" alt="Foto de Yadhi" class="about-img">
-      <div class="about-text">
-        <h2>Sobre mí</h2>
-        <p>
-          Soy Yadhi, apasionada por el diseño web, las interfaces modernas y la experiencia de usuario.
-          Me encanta transformar ideas en proyectos creativos y funcionales.
-        </p>
-        <ul>
-          <li>Diseño web moderno</li>
-          <li>Experiencia de usuario (UX/UI)</li>
-          <li>Desarrollo front-end avanzado</li>
-        </ul>
+      <div class="input-group">
+        <i class="ri-lock-line"></i>
+        <input type="password" id="password" placeholder="Contraseña">
       </div>
-    </div>
-  </section>
-
-  <!-- 📊 HABILIDADES -->
-  <section id="skills" class="skills">
-  <h2>Habilidades</h2>
-  <div class="skills-container">
-    <div class="skill-circle" style="--percent:95%;" data-skill="HTML/CSS">95%</div>
-    <div class="skill-circle" style="--percent:88%;" data-skill="JavaScript">88%</div>
-    <div class="skill-circle" style="--percent:80%;" data-skill="UI/Animaciones">80%</div>
-    <div class="skill-circle" style="--percent:70%;" data-skill="PHP/MySQL">70%</div>
-  </div>
-</section>
-
-
-  <!-- 💼 SERVICIOS -->
-  <section id="services" class="services">
-    <div class="cards">
-      <div class="card">
-        <h3>Diseño Web</h3>
-        <p>Creación de sitios modernos y funcionales con un estilo atractivo.</p>
-      </div>
-      <div class="card">
-        <h3>Desarrollo Frontend</h3>
-        <p>Experiencia interactiva y optimizada con tecnologías web actuales.</p>
-      </div>
-      <div class="card">
-        <h3>UX / UI</h3>
-        <p>Interfaces intuitivas y agradables para mejorar la experiencia del usuario.</p>
-      </div>
+      <button class="btn" onclick="login()">Entrar</button>
+      <p class="error" id="login-error"></p>
     </div>
   </section>
 
   <script src="script.js"></script>
-  <div class="particles">
-  <div class="particle" style="left:10%; animation-duration:15s;"></div>
-  <div class="particle" style="left:30%; animation-duration:12s;"></div>
-  <div class="particle" style="left:50%; animation-duration:18s;"></div>
-  <div class="particle" style="left:70%; animation-duration:10s;"></div>
-  <div class="particle" style="left:90%; animation-duration:14s;"></div>
-</div>
-
 </body>
 </html>
-
