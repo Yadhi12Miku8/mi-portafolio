@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrada al Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="entry-page">
+
+  <!-- 🎥 Video de fondo -->
+  <video autoplay muted loop id="entry-video">
+    <source src="videos/Hatsune Miku   [ Live Wallpaper _ Wallpaper Engine ] Free.mp4" type="video/mp4">
+  </video>
+
+  <!-- 🔲 Capa oscura -->
+  <div class="entry-overlay"></div>
+
+  <!-- ✨ Partículas animadas -->
+  <div class="entry-particles">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- 🌟 Contenido de bienvenida -->
+  <div class="entry-welcome">
+    <h1 class="entry-logo">Mi Portafolio</h1>
+    <h2>Bienvenido</h2>
+    <p>Explora mis proyectos y conoce más sobre mi trabajo.</p>
+    <a href="index.html" class="entry-btn">Entrar</a>
+  </div>
+
+</body>
+</html>
